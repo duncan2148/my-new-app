@@ -1,18 +1,14 @@
-//test
-const http = require("http");
+
 const express = require("express");
 const app = express();
-app.set("view-engine", "ejs");
+app.use("/public", express.static(`${process.cwd()}/public`));
 const hostname = "127.0.0.1";
 const port = process.env.PORT || 3000;
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader("Content-Type", "text/plain");
-  res.end("Hello World");
-});
+app.get("/", (req, res)=>{
+    res.sendFile(__dirname + "/views/index.html")
+})
 
-
-server.listen(port, hostname, () => {
-  console.log(`Server running at port: ${port}/`);
+app.listen(port, function () {
+  console.log(`Listening on port ${port}`);
 });
