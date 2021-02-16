@@ -1,2 +1,2 @@
-# my-new-app
-express app
+# building portfolio with articles
+express app with ejs templating engine, mongodb using gsap 
